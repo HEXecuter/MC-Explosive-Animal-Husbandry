@@ -1,0 +1,6 @@
+name: ExplosiveAnimalHusbandry
+version: '${project.version}'
+main: com.hexecuter.minecraft.explosiveanimalhusbandry.ExplosiveAnimalHusbandry
+api-version: 1.19
+authors: [ HEXecuter ]
+description: This mod provides an explosive twist to Minecraft's animal husbandry mechanics
