@@ -9,7 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityBreedEvent;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.Collection;
+import java.util.ArrayList;
 
 public class EntityBreedEventListener implements Listener {
 
@@ -20,7 +20,7 @@ public class EntityBreedEventListener implements Listener {
 
         if (!isAnimal) return;
 
-        Collection<ItemStack> lootFromEntity = HelperFunctions.getLootList((Animals) baby);
+        ArrayList<ItemStack> lootFromEntity = HelperFunctions.getLootList((Animals) baby);
         HelperFunctions.createExplosions(baby.getLocation(), 5);
 
 
