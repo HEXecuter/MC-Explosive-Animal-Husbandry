@@ -21,6 +21,7 @@ public class EntityBreedEventListener implements Listener {
         if (!isAnimal) return;
 
         Collection<ItemStack> lootFromEntity = HelperFunctions.getLootList((Animals) baby);
+        HelperFunctions.createExplosions(baby.getLocation(), 5);
 
 
     }

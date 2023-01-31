@@ -1,5 +1,9 @@
 package com.hexecuter.minecraft.explosiveanimalhusbandry.helpers;
 
+import org.bukkit.Location;
+import org.bukkit.Particle;
+import org.bukkit.Sound;
+import org.bukkit.World;
 import org.bukkit.entity.Animals;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.loot.LootContext;
@@ -15,5 +19,11 @@ public class HelperFunctions {
         LootContext lootContext = lootContextBuilder.build();
 
         return entity.getLootTable().populateLoot(new Random(), lootContext);
+    }
+
+    public static void createExplosions(Location location, int count) {
+        World world = location.getWorld();
+        world.spawnParticle(Particle.EXPLOSION_NORMAL, location, count, 2, 2, 2);
+        world.playSound(location, Sound.ENTITY_GENERIC_EXPLODE, 1.0f, 1.0f);
     }
 }
