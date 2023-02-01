@@ -72,4 +72,10 @@ public class HelperFunctions {
         int randomIndex = random.nextInt(arrayList.size());
         return arrayList.get(randomIndex);
     }
+
+    public static void lightningStrike(Location location, int count) {
+        for (int i = 0; i < count; i++) {
+            location.getWorld().strikeLightningEffect(location);
+        }
+    }
 }

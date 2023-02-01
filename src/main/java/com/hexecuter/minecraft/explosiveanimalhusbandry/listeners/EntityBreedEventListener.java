@@ -25,13 +25,14 @@ public class EntityBreedEventListener implements Listener {
 
         if (!isAnimal || !isPlayer) return;
 
+        ((Player) player).sendTitle("Ewwww That's Gross", "No holding hands before marriage!", 10, 30, 10);
         Bukkit.getScheduler().runTaskLater(ExplosiveAnimalHusbandry.instance, () -> {
             ArrayList<ItemStack> lootFromEntity = HelperFunctions.getLootList((Mob) baby);
             HelperFunctions.createExplosions(baby.getLocation(), 3);
             HelperFunctions.spawnItems(baby.getLocation(), lootFromEntity);
+            HelperFunctions.lightningStrike(baby.getLocation(), 5);
             baby.damage(100);
 
-            player.sendMessage("No holding hands before marriage!");
             ((Breedable) father).setBreed(true);
             ((Breedable) mother).setBreed(true);
         }, 60L);
