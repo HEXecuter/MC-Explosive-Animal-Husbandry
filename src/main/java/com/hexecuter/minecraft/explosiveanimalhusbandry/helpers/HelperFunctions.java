@@ -6,6 +6,7 @@ import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.ExperienceOrb;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Mob;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.loot.LootContext;
@@ -43,10 +44,25 @@ public class HelperFunctions {
             double zVelocity = random.nextDouble(.3) * (random.nextBoolean() ? -1 : 1);
             double yVelocity = 1;
 
+            // Actual loot the player will pick up
             world.dropItem(location, itemToDrop).setVelocity(new Vector(xVelocity, yVelocity, zVelocity));
             ExperienceOrb xpOrb = (ExperienceOrb) world.spawnEntity(location, EntityType.EXPERIENCE_ORB);
             xpOrb.setExperience(10);
             xpOrb.setVelocity(new Vector(xVelocity, yVelocity, zVelocity));
+
+            // Meatier explosion items that will disappear before they can be picked up
+            // Recalculating z and x velocity is needed so items don't clump up together
+            for (int j = 0; j < 3; j++) {
+                xVelocity = random.nextDouble(.3) * (random.nextBoolean() ? -1 : 1);
+                zVelocity = random.nextDouble(.3) * (random.nextBoolean() ? -1 : 1);
+                ItemStack decorationItemStack = itemToDrop.clone();
+                decorationItemStack.setAmount(64);
+                Item decorationItem = world.dropItem(location, decorationItemStack);
+                decorationItem.setVelocity(new Vector(xVelocity, yVelocity, zVelocity));
+                // Items disappear after 6000 ticks
+                decorationItem.setTicksLived(6000 - 40);
+                decorationItem.setPickupDelay(6000 - decorationItem.getTicksLived() + 40);
+            }
         }
 
     }
