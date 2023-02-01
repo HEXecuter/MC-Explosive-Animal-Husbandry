@@ -4,9 +4,9 @@ import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.World;
-import org.bukkit.entity.Animals;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.ExperienceOrb;
+import org.bukkit.entity.Mob;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.loot.LootContext;
 import org.bukkit.util.Vector;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class HelperFunctions {
-    public static ArrayList<ItemStack> getLootList(Animals entity) {
+    public static ArrayList<ItemStack> getLootList(Mob entity) {
         LootContext.Builder lootContextBuilder = new LootContext.Builder(entity.getLocation());
         lootContextBuilder.lootingModifier(10);
         lootContextBuilder.lootedEntity(entity);

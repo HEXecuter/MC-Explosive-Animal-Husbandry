@@ -3,10 +3,7 @@ package com.hexecuter.minecraft.explosiveanimalhusbandry.listeners;
 import com.hexecuter.minecraft.explosiveanimalhusbandry.ExplosiveAnimalHusbandry;
 import com.hexecuter.minecraft.explosiveanimalhusbandry.helpers.HelperFunctions;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Animals;
-import org.bukkit.entity.Breedable;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -29,7 +26,7 @@ public class EntityBreedEventListener implements Listener {
         if (!isAnimal || !isPlayer) return;
 
         Bukkit.getScheduler().runTaskLater(ExplosiveAnimalHusbandry.instance, () -> {
-            ArrayList<ItemStack> lootFromEntity = HelperFunctions.getLootList((Animals) baby);
+            ArrayList<ItemStack> lootFromEntity = HelperFunctions.getLootList((Mob) baby);
             HelperFunctions.createExplosions(baby.getLocation(), 3);
             HelperFunctions.spawnItems(baby.getLocation(), lootFromEntity);
             baby.damage(100);
